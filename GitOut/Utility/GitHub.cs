@@ -10,7 +10,7 @@ namespace GitOut.Utility
     public static string Main = "diract-it";
     public static string[] Sources = {"purr"};
     //public static string[] Sources = {"ceyenne-wms", "purr", "purr-apps"};
-    private const string Token = "b7f59f6160856895b35164438ab1e08dded0d27f";
+    private const string Token = "bf375eb2985e1a516d3c2fd8a3d3a19649f130af";
 
     public static dynamic Get(string uri)
     {

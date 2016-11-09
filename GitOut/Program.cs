@@ -20,7 +20,6 @@ namespace GitOut
           y.WhenStopped(z => z.Stop());
         });
 
-        x.UseNLog();
         x.RunAsLocalSystem();
 
         x.SetDescription("GitOut");
