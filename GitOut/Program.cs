@@ -1,5 +1,4 @@
 ﻿using GitOut.Utility;
-using Nancy;
 using Nancy.Hosting.Self;
 using System;
 using System.Configuration;
@@ -35,14 +34,10 @@ namespace GitOut
 
       public void Start()
       {
-        _host = new NancyHost(_uri, new Bootstrapper(), new HostConfiguration
+        (_host = new NancyHost(_uri, new Bootstrapper(), new HostConfiguration
         {
           UrlReservations = new UrlReservations {CreateAutomatically = true}
-        });
-
-        StaticConfiguration.DisableErrorTraces = false;
-        
-        _host.Start();
+        })).Start();
       }
 
       public void Stop()

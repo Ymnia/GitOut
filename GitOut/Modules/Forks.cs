@@ -11,9 +11,11 @@ namespace GitOut.Modules
     {
       Get["/forks/{repo}"] = p =>
       {
-        var forks = new List<Fork> {new Fork {Owner = GitHub.Main}};
-        var json = GitHub.Get($"repos/{GitHub.Main}/{p.repo}/forks?per_page=100");
+        string error;
+        var json = GitHub.Get($"repos/{GitHub.Main}/{p.repo}/forks?per_page=100", out error);
+        if (json == null) return new Error {Message = error};
 
+        var forks = new List<Fork> {new Fork {Owner = GitHub.Main}};
         foreach (var f in json) forks.Add(new Fork {Owner = f.owner.login});
         return new Repo {Name = p.repo, Owner = GitHub.Main, Forks = forks};
       };

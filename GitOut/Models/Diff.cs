@@ -1,6 +1,6 @@
 ﻿namespace GitOut.Models
 {
-  public class Diff : Base
+  public class Diff
   {
     public string Status;
     public int By;
