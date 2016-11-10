@@ -8,8 +8,7 @@ namespace GitOut.Utility
   public partial class GitHub
   {
     public static string Main = "diract-it";
-    public static string[] Sources = {"purr"};
-    //public static string[] Sources = {"ceyenne-wms", "purr", "purr-apps"};
+    public static string[] Sources = {"ceyenne-wms", "purr", "purr-apps"};
 
     public static dynamic Get(string uri, out string error)
     {

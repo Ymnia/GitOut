@@ -11,6 +11,9 @@ namespace GitOut.Modules
     {
       Get["/branches/{repo}/{owner}"] = p =>
       {
+        p.repo = NancyUri.Decode(p.repo);
+        p.owner = NancyUri.Decode(p.owner);
+
         string error;
         var json = GitHub.Get($"repos/{p.owner}/{p.repo}/branches?per_page=100", out error);
         if (json == null) return new Error {Message = error};

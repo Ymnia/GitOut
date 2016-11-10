@@ -88,6 +88,7 @@
     <Compile Include="Modules\Branches.cs" />
     <Compile Include="Modules\Diffs.cs" />
     <Compile Include="Modules\Forks.cs" />
+    <Compile Include="Utility\NancyUri.cs" />
     <Compile Include="Utility\Token.cs" />
     <Compile Include="Utility\GitHub.cs" />
     <Compile Include="Modules\Repos.cs" />
