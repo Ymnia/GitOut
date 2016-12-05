@@ -1,7 +1,4 @@
-﻿using GitOut.Utility;
-using Nancy.Hosting.Self;
-using System;
-using System.Configuration;
+﻿using GitOut.Services;
 using Topshelf;
 
 namespace GitOut
@@ -12,11 +9,18 @@ namespace GitOut
     {
       HostFactory.Run(x =>
       {
-        x.Service<NancySelfHost>(y =>
+        x.Service<Service>(y =>
         {
-          y.ConstructUsing(z => new NancySelfHost());
+          y.ConstructUsing(z => new Service());
           y.WhenStarted(z => z.Start());
           y.WhenStopped(z => z.Stop());
+        });
+
+        x.Service<Scheduler>(s =>
+        {
+          s.ConstructUsing(z => new Scheduler());
+          s.WhenStarted(z => z.Start());
+          s.WhenStopped(z => z.Stop());
         });
 
         x.RunAsLocalSystem();
@@ -24,26 +28,9 @@ namespace GitOut
         x.SetDescription("GitOut");
         x.SetDisplayName("GitOut");
         x.SetServiceName("GitOut");
+
+        x.StartAutomatically();
       });
-    }
-
-    public class NancySelfHost
-    {
-      private NancyHost _host;
-      private readonly Uri _uri = new Uri($"http://{ConfigurationManager.AppSettings["HostAddress"]}");
-
-      public void Start()
-      {
-        (_host = new NancyHost(_uri, new Bootstrapper(), new HostConfiguration
-        {
-          UrlReservations = new UrlReservations {CreateAutomatically = true}
-        })).Start();
-      }
-
-      public void Stop()
-      {
-        _host.Stop();
-      }
     }
   }
 }

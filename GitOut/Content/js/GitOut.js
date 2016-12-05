@@ -6,6 +6,12 @@ var getForks = (p, r) => {
 };
 
 var getBranches = (p, r, f) => {
+  var owner = new RegExp("[\?&]o=([^&#]*)").exec(window.location.href);
+  if (owner && f.owner !== owner[1]) {
+    p.children(".loader").remove();
+    return;
+  }
+
   const uri = `/branches/${encode(r.name)}/${encode(f.owner)}`;
   getData(p, uri, x => x.branches, b => `${f.owner}/${b.name}`, (e, b) => getDiff(e, r, f, b));
 };
@@ -20,7 +26,9 @@ var printDiff = (p, r, f, b, d) => {
   if (d.status === "behind") return;
 
   p.append($(`<div class="branch">
-    <span class="status" style="background-color: #ff9999">${f.owner}'s ${b.name}</span>
+    <span class ="status" style="background-color: #ff9999">
+      <a href="/?o=${f.owner}">${f.owner}</a>'s ${b.name}
+    </span>
     <span class="link"><a href="${d.link}">Check PR</a></span>
     <span class="info">by ${d.by} commits</span>
     <br class ="clear" />
