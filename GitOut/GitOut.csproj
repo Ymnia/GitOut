@@ -84,7 +84,6 @@
   <ItemGroup>
     <Compile Include="Models\Error.cs" />
     <Compile Include="Services\Service.cs" />
-    <Compile Include="Services\Scheduler.cs" />
     <Compile Include="Utility\Bootstrapper.cs" />
     <Compile Include="Models\Fork.cs" />
     <Compile Include="Models\Branch.cs" />

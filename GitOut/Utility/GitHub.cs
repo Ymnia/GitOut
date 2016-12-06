@@ -39,13 +39,13 @@ namespace GitOut.Utility
       }
     }
 
-    public static dynamic Post(string uri, string json, out string error)
+    public static dynamic Post(string uri, string json, out string error, string method = "POST")
     {
       try
       {
         var req = (HttpWebRequest) WebRequest.Create($"https://api.github.com/{uri}");
 
-        req.Method = "POST";
+        req.Method = method;
         req.UserAgent = "GitOut";
         req.Headers.Add("Authorization", $"Basic {Token}");
 
