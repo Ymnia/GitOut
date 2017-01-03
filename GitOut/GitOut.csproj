@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Error.cs" />
+    <Compile Include="Services\LeagueOfLegends.cs" />
     <Compile Include="Services\AdventOfCode.cs" />
     <Compile Include="Services\AutoPull.cs" />
     <Compile Include="Services\Service.cs" />

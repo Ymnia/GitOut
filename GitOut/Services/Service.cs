@@ -20,6 +20,7 @@ namespace GitOut.Services
 
       JobManager.Initialize(new AutoPull());
       JobManager.Initialize(new AdventOfCode());
+      JobManager.Initialize(new LeagueOfLegends());
     }
 
     public void Stop()
