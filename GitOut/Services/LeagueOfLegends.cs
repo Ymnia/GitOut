@@ -58,7 +58,7 @@ namespace GitOut.Services
               p.Value.ToString(),
               p.Value.QuadraKills == 1 ? "A" : p.Value.QuadraKills.ToString(CultureInfo.InvariantCulture),
               p.Value.QuadraKills > 1 ? "S" : ""
-              ), ":quadra:", "LOL");
+              ), ":quadra:", "League of Legends");
           }
 
           // report pentakills
@@ -68,11 +68,11 @@ namespace GitOut.Services
               p.Value.ToString(),
               p.Value.PentaKills == 1 ? "A" : p.Value.PentaKills.ToString(CultureInfo.InvariantCulture),
               p.Value.PentaKills > 1 ? "S" : ""
-              ), ":penta:", "LOL");
+              ), ":penta:", "League of Legends");
           }
 
           // report game stats
-          Slack.SendMessage("#lol", game.Value.ToString(), ":lol:", "LOL");
+          Slack.SendMessage("#lol", game.Value.ToString(), ":lol:", "League of Legends");
         }
       }
       catch

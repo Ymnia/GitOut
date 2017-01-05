@@ -15,7 +15,7 @@ namespace GitOut.Services
 
     public AdventOfCode()
     {
-      Schedule(Process).ToRunNow().AndEvery(15).Minutes();
+      Schedule(Process).ToRunNow().AndEvery(30).Minutes();
     }
 
     public void Process()

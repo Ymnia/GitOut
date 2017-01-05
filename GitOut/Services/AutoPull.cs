@@ -10,7 +10,7 @@ namespace GitOut.Services
   {
     public AutoPull()
     {
-      Schedule(Process).ToRunNow().AndEvery(1).Hours();
+      Schedule(Process).ToRunNow().AndEvery(15).Minutes();
     }
 
     public void Process()
