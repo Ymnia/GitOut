@@ -18,9 +18,9 @@ namespace GitOut.Services
         UrlReservations = new UrlReservations {CreateAutomatically = true}
       })).Start();
 
-      JobManager.Initialize(new AutoPull());
-      JobManager.Initialize(new AdventOfCode());
+      JobManager.Initialize(new FeatureBranch());
       JobManager.Initialize(new LeagueOfLegends());
+      //JobManager.Initialize(new AdventOfCode());
     }
 
     public void Stop()

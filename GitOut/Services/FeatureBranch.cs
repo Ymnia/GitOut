@@ -1,14 +1,13 @@
 ﻿using FluentScheduler;
 using GitOut.Utility;
-using System;
-using System.Configuration;
+using System.IO;
 using System.Linq;
 
 namespace GitOut.Services
 {
-  public class AutoPull : Registry
+  public class FeatureBranch : Registry
   {
-    public AutoPull()
+    public FeatureBranch()
     {
       Schedule(Process).ToRunNow().AndEvery(15).Minutes();
     }
@@ -19,11 +18,11 @@ namespace GitOut.Services
       // in the future, i would like guidelines to define branch names, so this can be done automatically based on the branch name
       // for instance, FOO should always be pulled into any FOO#BAR branch unconditionally
 
-      var config = ConfigurationManager.AppSettings["AutoPull"].Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries)
-                                                               .Where(x => !string.IsNullOrWhiteSpace(x))
-                                                               .Select(x => x.Trim().Split(';'));
+      var branches = File.ReadAllLines("Services/FeatureBranch.data")
+                         .Where(x => !string.IsNullOrWhiteSpace(x))
+                         .Select(x => x.Trim().Split(';'));
 
-      foreach (var c in config)
+      foreach (var c in branches)
       {
         string error;
         var repo = c[0];
@@ -32,7 +31,7 @@ namespace GitOut.Services
 
         GitHub.Post($"repos/{GitHub.Main}/{repo}/pulls",
           $@"{{
-            ""title"": ""{from} --> {to} (auto)"",
+            ""title"": ""{from} → {to}"",
             ""body"": ""Automatic PR for feature branch"",
             ""head"": ""{from}"",
             ""base"": ""{to}""

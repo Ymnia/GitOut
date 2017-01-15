@@ -85,7 +85,7 @@
     <Compile Include="Models\Error.cs" />
     <Compile Include="Services\LeagueOfLegends.cs" />
     <Compile Include="Services\AdventOfCode.cs" />
-    <Compile Include="Services\AutoPull.cs" />
+    <Compile Include="Services\FeatureBranch.cs" />
     <Compile Include="Services\Service.cs" />
     <Compile Include="Utility\Bootstrapper.cs" />
     <Compile Include="Models\Fork.cs" />
@@ -106,6 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Services\FeatureBranch.data">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

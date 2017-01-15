@@ -54,25 +54,25 @@ namespace GitOut.Services
           // report quadrakills
           foreach (var p in game.Value.Players.Where(p => p.Value.QuadraKills > 0 && p.Value.PentaKills == 0))
           {
-            Slack.SendMessage("#lol", string.Format("{0} had {1} QUADRAKILL{2}!!",
+            Slack.SendMessage(string.Format("{0} had {1} QUADRAKILL{2}!!",
               p.Value.ToString(),
               p.Value.QuadraKills == 1 ? "A" : p.Value.QuadraKills.ToString(CultureInfo.InvariantCulture),
               p.Value.QuadraKills > 1 ? "S" : ""
-              ), ":quadra:", "League of Legends");
+              ), "#lol", ":quadra:", "League of Legends");
           }
 
           // report pentakills
           foreach (var p in game.Value.Players.Where(p => p.Value.PentaKills > 0))
           {
-            Slack.SendMessage("#lol", string.Format("{0} had {1} PENTAKILL{2}!! @channel",
+            Slack.SendMessage(string.Format("{0} had {1} PENTAKILL{2}!! @channel",
               p.Value.ToString(),
               p.Value.PentaKills == 1 ? "A" : p.Value.PentaKills.ToString(CultureInfo.InvariantCulture),
               p.Value.PentaKills > 1 ? "S" : ""
-              ), ":penta:", "League of Legends");
+              ), "#lol", ":penta:", "League of Legends");
           }
 
           // report game stats
-          Slack.SendMessage("#lol", game.Value.ToString(), ":lol:", "League of Legends");
+          Slack.SendMessage(game.Value.ToString(), "#lol", ":lol:", "League of Legends");
         }
       }
       catch
