@@ -19,7 +19,10 @@ namespace GitOut.Services
       // for instance, FOO should always be pulled into any FOO#BAR branch unconditionally
 
       var branches = File.ReadAllLines("Services/FeatureBranch.data")
-                         .Where(x => !string.IsNullOrWhiteSpace(x))
+                         .Where(x =>
+                                !string.IsNullOrWhiteSpace(x)
+                                && !x.StartsWith("//")
+                         )
                          .Select(x => x.Trim().Split(';'));
 
       foreach (var c in branches)
