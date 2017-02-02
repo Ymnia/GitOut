@@ -9,7 +9,7 @@ namespace GitOut.Services
   {
     public FeatureBranch()
     {
-      Schedule(Process).ToRunNow().AndEvery(5).Minutes();
+      Schedule(Process).NonReentrant().ToRunNow().AndEvery(5).Minutes();
     }
 
     public void Process()
@@ -31,11 +31,11 @@ namespace GitOut.Services
 
         GitHub.Post($"repos/{GitHub.Main}/{repo}/pulls",
           $@"{{
-            ""title"": ""{from} → {to}"",
-            ""body"": ""Automatic PR for feature branch"",
-            ""head"": ""{from}"",
-            ""base"": ""{to}""
-          }}", out error);
+""title"": ""{from} → {to}"",
+""body"": ""Automatic PR for feature branch"",
+""head"": ""{from}"",
+""base"": ""{to}""
+}}", out error);
       }
     }
   }
