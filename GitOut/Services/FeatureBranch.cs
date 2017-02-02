@@ -9,7 +9,7 @@ namespace GitOut.Services
   {
     public FeatureBranch()
     {
-      Schedule(Process).ToRunNow().AndEvery(15).Minutes();
+      Schedule(Process).ToRunNow().AndEvery(5).Minutes();
     }
 
     public void Process()
