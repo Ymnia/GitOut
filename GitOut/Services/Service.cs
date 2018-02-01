@@ -19,8 +19,8 @@ namespace GitOut.Services
       })).Start();
 
       JobManager.Initialize(new FeatureBranch());
-      JobManager.Initialize(new LeagueOfLegends());
-      JobManager.Initialize(new AdventOfCode());
+      //JobManager.Initialize(new LeagueOfLegends());
+      //JobManager.Initialize(new AdventOfCode());
     }
 
     public void Stop()
