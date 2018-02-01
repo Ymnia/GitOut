@@ -17,7 +17,7 @@ namespace GitOut.Utility
         var req = (HttpWebRequest) WebRequest.Create($"https://api.github.com/{uri}");
 
         req.UserAgent = "GitOut";
-        req.Headers.Add("Authorization", $"Basic {Token}");
+        req.Headers.Add("Authorization", $"Token {Token}");
 
         using (var res = (HttpWebResponse) req.GetResponse())
         {
